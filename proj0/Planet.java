@@ -1,7 +1,7 @@
 public class Planet {
 
     /** Static variable*/
-    public static final double gravConstant = 6.67e-11;
+    private static final double gravConstant = 6.67e-11;
 
     /** Instance variables for Planet object */
     public double xxPos;
