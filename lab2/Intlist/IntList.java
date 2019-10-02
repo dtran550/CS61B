@@ -82,8 +82,8 @@ public class IntList {
      * comment out the first, uncomment the second to run test on it.
      */
 
+    /*
     public static IntList dcatenate(IntList A, IntList B) {
-        //TODO:  fill in method
         IntList pointer = A;
         if (A != null) {
             while (A.rest != null) {
@@ -94,7 +94,8 @@ public class IntList {
         }
         return B;
     }
-    /*
+     */
+
     public static IntList dcatenate(IntList A, IntList B) {
         if (A == null) {
             return B;
@@ -105,15 +106,16 @@ public class IntList {
         }
         return A;
     }
-     */
+
 
     /**
      * Returns a list consisting of the elements of A followed by the
      * elements of B.  May NOT modify items of A.  Use 'new'. First
      * version is iterative, while second version is recursive.
      */
+
+    /*
     public static IntList catenate(IntList A, IntList B) {
-        //TODO:  fill in method
         if (A != null) {
             IntList newList = new IntList(A.first, null);
             IntList pointer = newList;
@@ -128,7 +130,8 @@ public class IntList {
         }
         return B;
     }
-    /*
+     */
+
     public static IntList catenate(IntList A, IntList B) {
         if (A == null) {
             return B;
@@ -140,7 +143,7 @@ public class IntList {
             return new IntList(A.first, catenate(A.rest, B));
         }
     }
-     */
+    
 
 
 
