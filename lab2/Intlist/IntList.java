@@ -80,18 +80,79 @@ public class IntList {
      * *  elements of B.  May modify items of A. Don't use 'new'.
      */
 
+    public static IntList Rdcatenate(IntList A, IntList B) {
+        if (A == null) {
+            return B;
+        }
+        if (A.rest == null) {
+           return A.rest = B;
+        }
+        dcatenate(A.rest, B);
+        return A;
+    }
+
     public static IntList dcatenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        if (A == null) {
+            return B;
+        }
+        else if (B == null) {
+            return A;
+        }
+        IntList pointer = A;
+        while (pointer.rest != null) {
+            pointer = pointer.rest;
+        }
+        pointer.rest = B;
+        return A;
     }
 
     /**
      * Returns a list consisting of the elements of A followed by the
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
+    public static IntList Rcatenate(IntList A, IntList B) {
+        if (A == null) {
+            return B;
+        }
+        else if(A.rest == null) {
+            return new IntList(A.first, B);
+        }
+        else {
+            return new IntList(A.first, catenate(A.rest, B));
+        }
+    }
+
+    public static IntList catenateABSAME(IntList A, IntList B) {
+        if (A == null && B == null) {
+            return null;
+        }
+        if (A == null) {
+            return new IntList(B.first, catenate(A, B.rest));
+        }
+        else if(B == null) {
+            return new IntList(A.first, catenate(A.rest, B));
+        }
+        else {
+            return new IntList(A.first, catenate(A.rest, B));
+        }
+    }
+
     public static IntList catenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        IntList newList;
+        if (A == null) {
+            return B;
+        }
+        else {
+            newList = new IntList(A.first, null);
+            IntList pointer = newList;
+            while (A.rest != null) {
+                A = A.rest;
+                pointer.rest = new IntList(A.first, null);
+                pointer = pointer.rest;
+            }
+            pointer.rest = B;
+        }
+        return newList;
     }
 
 
@@ -107,14 +168,12 @@ public class IntList {
 
 
 
-
-
-    /**
-     * DO NOT MODIFY ANYTHING BELOW THIS LINE! Many of the concepts below here
-     * will be introduced later in the course or feature some form of advanced
-     * trickery which we implemented to help make your life a little easier for
-     * the lab.
-     */
+        /**
+         * DO NOT MODIFY ANYTHING BELOW THIS LINE! Many of the concepts below here
+         * will be introduced later in the course or feature some form of advanced
+         * trickery which we implemented to help make your life a little easier for
+         * the lab.
+         */
 
     @Override
     public int hashCode() {
