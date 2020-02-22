@@ -11,11 +11,11 @@ public class IntList {
     /**
      * First element of list.
      */
-    public int first;
+    private int first;
     /**
      * Remaining elements of list.
      */
-    public IntList rest;
+    private IntList rest;
     private IntList next;
 
     /**
@@ -81,12 +81,12 @@ public class IntList {
      * *  elements of B.  May modify items of A. Don't use 'new'.
      */
 
-    public static IntList Rdcatenate(IntList A, IntList B) {
+    public static IntList rDcatenate(IntList A, IntList B) {
         if (A == null) {
             return B;
         }
         if (A.rest == null) {
-           return A.rest = B;
+            return A.rest = B;
         }
         dcatenate(A.rest, B);
         return A;
@@ -95,8 +95,7 @@ public class IntList {
     public static IntList dcatenate(IntList A, IntList B) {
         if (A == null) {
             return B;
-        }
-        else if (B == null) {
+        } else if (B == null) {
             return A;
         }
         IntList pointer = A;
@@ -111,14 +110,12 @@ public class IntList {
      * Returns a list consisting of the elements of A followed by the
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
-    public static IntList Rcatenate(IntList A, IntList B) {
+    public static IntList rCatenate(IntList A, IntList B) {
         if (A == null) {
             return B;
-        }
-        else if(A.rest == null) {
+        } else if (A.rest == null) {
             return new IntList(A.first, B);
-        }
-        else {
+        } else {
             return new IntList(A.first, catenate(A.rest, B));
         }
     }
@@ -129,11 +126,9 @@ public class IntList {
         }
         if (A == null) {
             return new IntList(B.first, catenate(A, B.rest));
-        }
-        else if(B == null) {
+        } else if (B == null) {
             return new IntList(A.first, catenate(A.rest, B));
-        }
-        else {
+        } else {
             return new IntList(A.first, catenate(A.rest, B));
         }
     }
@@ -142,8 +137,7 @@ public class IntList {
         IntList newList;
         if (A == null) {
             return B;
-        }
-        else {
+        } else {
             newList = new IntList(A.first, null);
             IntList pointer = newList;
             while (A.rest != null) {
@@ -164,8 +158,7 @@ public class IntList {
     public static IntList reverse(IntList front) {
         if (front == null || front.rest == null) {
             return front;
-        }
-        else {
+        } else {
             IntList reversed = reverse(front.rest);
             front.rest.rest = front;
             front.rest = null;
