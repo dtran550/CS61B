@@ -29,9 +29,7 @@ public class ArrayDeque<T> {
             }
             newArray[num] = arrayDeque[i];
         }
-        arrayDeque = null;
         arrayDeque = newArray;
-        newArray = null;
         beg = 0;
         capacity = (int) newCapacity;
     }
@@ -94,7 +92,7 @@ public class ArrayDeque<T> {
             beg = 0;
         }
         curSize -= 1;
-        if (curSize >= 16 && ((curSize * 100) / capacity) < 25) {
+        if (capacity >= 16 && ((curSize * 100) / capacity) < 25) {
             resize(0.5);
         }
         return item;

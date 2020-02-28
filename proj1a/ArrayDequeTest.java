@@ -135,11 +135,24 @@ public class ArrayDequeTest {
         printTestStatus(passed);
     }
 
+    public static void memoryTest() {
+        ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
+        for (int i = 0; i < 400; i++) {
+            lld1.addLast(i);
+        }
+        lld1.printDeque();
+        for (int i = 0; i < 399; i++) {
+            lld1.removeFirst();
+        }
+        lld1.printDeque();
+
+    }
 
 
     public static void main(String[] args) {
         System.out.println("Running tests.\n");
         addIsEmptySizeTest();
         addRemoveTest();
+        memoryTest();
     }
 }
