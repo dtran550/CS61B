@@ -29,7 +29,9 @@ public class ArrayDeque<T> {
             }
             newArray[num] = arrayDeque[i];
         }
+        arrayDeque = null;
         arrayDeque = newArray;
+        newArray = null;
         beg = 0;
         capacity = (int) newCapacity;
     }
