@@ -1,4 +1,5 @@
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Base64;
@@ -12,18 +13,25 @@ import java.util.zip.GZIPInputStream;
  */
 public class TTFAF {
     public static void main(String[] args) {
-        try {
+        /*try {
             InputStream source = new ByteArrayInputStream(Base64.getDecoder().decode(TTFAF));
             source = new GZIPInputStream(source);
             GuitarPlayer player = new GuitarPlayer(source);
             player.play();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
         // You can also do this:
-        // GuitarPlayer player = new GuitarPlayer(new java.io.File("path/to/music.mid"));
-        // player.play();
+        File sampleFile = new java.io.File("synthesizer/hidamari.mid");
+        try {
+            System.out.println("Attempting to read from file in: " + sampleFile.getCanonicalPath());
+            GuitarPlayer player = new GuitarPlayer(sampleFile);
+            player.play();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private static final String TTFAF =
