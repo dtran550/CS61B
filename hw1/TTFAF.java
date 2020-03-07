@@ -13,7 +13,7 @@ import java.util.zip.GZIPInputStream;
  */
 public class TTFAF {
     public static void main(String[] args) {
-       try {
+        try {
             InputStream source = new ByteArrayInputStream(Base64.getDecoder().decode(TTFAF));
             source = new GZIPInputStream(source);
             GuitarPlayer player = new GuitarPlayer(source);
@@ -23,7 +23,6 @@ public class TTFAF {
         }
 
         // You can also do this:
-        /*
         File sampleFile = new java.io.File("synthesizer/hidamari.mid");
         try {
             System.out.println("Attempting to read from file in: " + sampleFile.getCanonicalPath());
@@ -32,8 +31,6 @@ public class TTFAF {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        */
-
     }
 
     private static final String TTFAF =
