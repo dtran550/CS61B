@@ -1,6 +1,5 @@
 package synthesizer;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Iterator;
 
 public class GuitarString {
@@ -11,13 +10,13 @@ public class GuitarString {
     private static final double DECAY = .996; // energy decay factor
 
     /* Buffer for storing sound data. */
-    protected BoundedQueue<Double> buffer;
+    private BoundedQueue<Double> buffer;
 
     /* Create a guitar string of the given frequency.  */
     public GuitarString(double frequency) {
         int capacity = (int) Math.round(SR / frequency);
         buffer = new ArrayRingBuffer<>(capacity);
-        for (int i = 0; i < capacity; i+= 1) {
+        for (int i = 0; i < capacity; i += 1) {
             buffer.enqueue(0.0);
         }
     }
@@ -41,15 +40,11 @@ public class GuitarString {
      * the Karplus-Strong algorithm. 
      */
     public void tic() {
-        // TODO: Dequeue the front sample and enqueue a new sample that is
-        //       the average of the two multiplied by the DECAY factor.
-        //       Do not call StdAudio.play().
         buffer.enqueue((buffer.dequeue() + buffer.peek()) * DECAY * 0.5);
     }
 
     /* Return the double at the front of the buffer. */
     public double sample() {
-        // TODO: Return the correct thing.
         return buffer.peek();
     }
 }
